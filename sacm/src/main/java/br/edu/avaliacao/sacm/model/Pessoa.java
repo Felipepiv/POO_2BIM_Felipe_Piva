@@ -1,10 +1,9 @@
-package model;
+package br.edu.avaliacao.sacm.model;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.period;
 
-public class Pessoa {
+public abstract class Pessoa {
 
     private long id;
     private String nome;

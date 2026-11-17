@@ -1,4 +1,4 @@
-package model;
+package br.edu.avaliacao.sacm.model;
 
 public class Paciente {
     
