@@ -76,12 +76,12 @@ public class SistemaConsole {
                     case "0" -> { encerrar(); return; }
                     default -> System.out.println("Opção inválida.");
                 }
-            } catch (RegraNegocioException e) {
-                // Erro de negócio: mensagem compreensível (RN09)
+                    } catch (RegraNegocioException e) {
                 System.out.println("Erro: " + e.getMessage());
-                // RN09: falhas SQL preservam a causa técnica para diagnóstico
-                if (e.getCause() != null) {
-                    System.out.println("Causa técnica: " + e.getCause().getMessage());
+                Throwable causa = e.getCause();
+                while (causa != null) {
+                    System.out.println("Causa técnica: " + causa.getMessage());
+                    causa = causa.getCause();
                 }
             } catch (DateTimeParseException | IllegalArgumentException e) {
                 // Data, número ou especialidade digitados em formato inválido
