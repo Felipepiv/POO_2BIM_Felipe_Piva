@@ -79,6 +79,10 @@ public class SistemaConsole {
             } catch (RegraNegocioException e) {
                 // Erro de negócio: mensagem compreensível (RN09)
                 System.out.println("Erro: " + e.getMessage());
+                // RN09: falhas SQL preservam a causa técnica para diagnóstico
+                if (e.getCause() != null) {
+                    System.out.println("Causa técnica: " + e.getCause().getMessage());
+                }
             } catch (DateTimeParseException | IllegalArgumentException e) {
                 // Data, número ou especialidade digitados em formato inválido
                 System.out.println("Dado em formato inválido. Tente novamente.");
